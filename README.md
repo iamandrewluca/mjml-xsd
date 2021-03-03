@@ -1,0 +1,1 @@
+# mjml-xml-schema-definition
