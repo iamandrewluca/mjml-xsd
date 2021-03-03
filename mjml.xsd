@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="mjml" />
-</xs:schema>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="mjml">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="mj-head">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="mj-title" type="xsd:string"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
