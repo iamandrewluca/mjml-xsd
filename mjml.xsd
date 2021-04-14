@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="mjml">
-        <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="mj-head">
-                    <xsd:complexType>
-                        <xsd:sequence>
-                            <xsd:element name="mj-title" type="xsd:string"/>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
-            </xsd:sequence>
-        </xsd:complexType>
-    </xsd:element>
+    <xsd:element name="mjml" type="MjmlType" />
+
+    <xsd:complexType name="MjmlType">
+        <xsd:sequence>
+            <xsd:element name="mj-head" type="MjHeadType" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="mj-body" type="MjBodyType" minOccurs="1" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="MjHeadType">
+        <xsd:sequence>
+            <xsd:element name="mj-title" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="mj-title" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="mj-style" type="MjStyleType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="MjStyleType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="inline">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="inline" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="MjBodyType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string"></xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="MjRawType">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string"></xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+
 </xsd:schema>
