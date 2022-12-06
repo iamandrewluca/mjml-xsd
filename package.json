@@ -1,0 +1,27 @@
+{
+	"name": "mjml-xsd",
+	"version": "1.0.0",
+	"description": "https://github.com/mjmlio/mjml/blob/master/packages/mjml-preset-core/src/dependencies.js",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"format": "npx prettier --write --ignore-path .gitignore --ignore-unknown '**'"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iamandrewluca/mjml-xsd.git"
+	},
+	"keywords": [],
+	"author": "Andrew Luca",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/iamandrewluca/mjml-xsd/issues"
+	},
+	"homepage": "https://github.com/iamandrewluca/mjml-xsd#readme",
+	"dependencies": {
+		"@allindevelopers/prettier-config": "^1.0.0",
+		"@prettier/plugin-xml": "^2.2.0",
+		"dedent": "^0.7.0",
+		"prettier": "^2.8.0"
+	}
+}

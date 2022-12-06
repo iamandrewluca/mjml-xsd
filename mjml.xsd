@@ -1,48 +1,249 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <xsd:element name="mjml" type="MjmlType" />
+	<xsd:element name="mjml" type="mjml-type" />
 
-    <xsd:complexType name="MjmlType">
-        <xsd:sequence>
-            <xsd:element name="mj-head" type="MjHeadType" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="mj-body" type="MjBodyType" minOccurs="1" maxOccurs="1" />
-        </xsd:sequence>
-    </xsd:complexType>
+	<xsd:complexType name="mjml-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-body" type="mj-body-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-head" type="mj-head-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="MjHeadType">
-        <xsd:sequence>
-            <xsd:element name="mj-title" type="xsd:string" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="mj-title" type="xsd:string" minOccurs="0" maxOccurs="1" />
-            <xsd:element name="mj-style" type="MjStyleType" minOccurs="0" maxOccurs="unbounded" />
-        </xsd:sequence>
-    </xsd:complexType>
+	<xsd:complexType name="mj-body-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-section" type="mj-section-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-wrapper" type="mj-wrapper-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-hero" type="mj-hero-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="MjStyleType">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string">
-                <xsd:attribute name="inline">
-                    <xsd:simpleType>
-                        <xsd:restriction base="xsd:string">
-                            <xsd:enumeration value="inline" />
-                        </xsd:restriction>
-                    </xsd:simpleType>
-                </xsd:attribute>
-            </xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
+	<xsd:complexType name="mj-raw-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
 
+	<xsd:complexType name="mj-section-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-column" type="mj-column-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-group" type="mj-group-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="MjBodyType">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string"></xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
+	<xsd:complexType name="mj-column-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-accordion" type="mj-accordion-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-button" type="mj-button-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-carousel" type="mj-carousel-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-divider" type="mj-divider-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-image" type="mj-image-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-social" type="mj-social-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-spacer" type="mj-spacer-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-table" type="mj-table-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-text" type="mj-text-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-navbar" type="mj-navbar-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
-    <xsd:complexType name="MjRawType">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string"></xsd:extension>
-        </xsd:simpleContent>
-    </xsd:complexType>
+	<xsd:complexType name="mj-accordion-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-accordion-element" type="mj-accordion-element-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
+	<xsd:complexType name="mj-accordion-element-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-accordion-title" type="mj-accordion-title-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-accordion-text" type="mj-accordion-text-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 
+	<xsd:complexType name="mj-accordion-title-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-accordion-text-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-button-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-carousel-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-carousel-image" type="mj-carousel-image-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-carousel-image-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-divider-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-image-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-social-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-social-element" type="mj-social-element-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-social-element-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-spacer-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-table-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-text-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-navbar-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-navbar-link" type="mj-navbar-link-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-navbar-link-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-group-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-column" type="mj-column-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-wrapper-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-hero" type="mj-hero-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-section" type="mj-section-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-hero-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-accordion" type="mj-accordion-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-button" type="mj-button-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-carousel" type="mj-carousel-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-divider" type="mj-divider-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-image" type="mj-image-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-social" type="mj-social-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-spacer" type="mj-spacer-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-table" type="mj-table-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-text" type="mj-text-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-navbar" type="mj-navbar-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-head-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-attributes" type="mj-attributes-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-breakpoint" type="mj-breakpoint-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-html-attributes" type="mj-html-attributes-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-font" type="mj-font-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-preview" type="mj-preview-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-style" type="mj-style-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-title" type="mj-title-type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="mj-raw" type="mj-raw-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-attributes-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-breakpoint-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-html-attributes-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-selector" type="mj-selector-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-selector-type">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="mj-html-attribute" type="mj-html-attribute-type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-html-attribute-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-font-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-preview-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-style-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="mj-title-type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string" />
+		</xsd:simpleContent>
+	</xsd:complexType>
 </xsd:schema>

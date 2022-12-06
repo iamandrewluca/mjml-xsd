@@ -1,5 +1,13 @@
-<mjml xsi:noNamespaceSchemaLocation="mjml.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <mj-head>
-        <mj-title>MJML Title here</mj-title>
-    </mj-head>
+<mjml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mjml.xsd">
+	<mj-head>
+		<mj-title>MJML Title here</mj-title>
+	</mj-head>
+	<mj-body>
+		<mj-section>
+			<mj-column>
+				<mj-button>BUtton</mj-button>
+				<mj-text>Text</mj-text>
+			</mj-column>
+		</mj-section>
+	</mj-body>
 </mjml>
